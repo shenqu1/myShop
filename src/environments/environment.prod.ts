@@ -1,3 +1,5 @@
+import { firebase } from './firebase.environment';
 export const environment = {
-  production: true
+  production: true,
+  firebase: firebase
 };
