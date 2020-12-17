@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AppUser } from '../models/AppUser';
 
 @Component({
   selector: 'app-bs-nav',
@@ -8,10 +9,13 @@ import { AuthService } from '../auth.service';
 })
 export class BsNavComponent implements OnInit {
 
-  constructor(public auth: AuthService) {
+  appUser:AppUser
+
+  constructor(private auth: AuthService) {
   }
 
   ngOnInit(): void {
+    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
   logout() {
