@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-bs-nav',
@@ -8,14 +9,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class BsNavComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth) {
-    afAuth.authState.subscribe(s => console.log(s));
+  constructor(public auth: AuthService) {
   }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.afAuth.signOut();
+    this.auth.logout();
   }
 }
