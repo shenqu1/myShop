@@ -9,6 +9,7 @@ import { AppUser } from '../models/AppUser';
 })
 export class BsNavComponent implements OnInit {
 
+  collapsed = true;
   appUser:AppUser
 
   constructor(private auth: AuthService) {
