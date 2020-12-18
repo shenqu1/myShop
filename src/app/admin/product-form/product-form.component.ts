@@ -47,7 +47,7 @@ export class ProductFormComponent implements OnInit {
   onSubmit() {
     if(this.form.valid){
       this.productService.saveProduct(this.form.value);
-      this.router.navigate(['/products']);
+      this.router.navigate(['/admin/products']);
     }
   }
 }
