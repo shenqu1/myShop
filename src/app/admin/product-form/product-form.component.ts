@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/category.service';
 import { PriceValidators } from 'src/app/common/validators/price.validators';
 import { ProductService } from 'src/app/product.service';
@@ -20,7 +21,7 @@ export class ProductFormComponent implements OnInit {
     'imgUrl': new FormControl('', [Validators.required, Validators.pattern("(^http[s]?:\/{2})|(^www)|(^\/{1,2})")])
   });
 
-  constructor(private categoryService: CategoryService, private productService: ProductService) {
+  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) {
     this.category$ = categoryService.getCategory()
   }
 
@@ -44,7 +45,9 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.form.valid)
-    this.productService.saveProduct(this.form.value);
+    if(this.form.valid){
+      this.productService.saveProduct(this.form.value);
+      this.router.navigate(['/products']);
+    }
   }
 }
