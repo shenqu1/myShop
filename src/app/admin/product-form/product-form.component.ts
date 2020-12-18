@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { CategoryService } from 'src/app/category.service';
 import { PriceValidators } from 'src/app/common/validators/price.validators';
 import { ProductService } from 'src/app/product.service';
@@ -13,6 +14,7 @@ import { ProductService } from 'src/app/product.service';
 export class ProductFormComponent implements OnInit {
 
   category$
+  id
 
   form = new FormGroup({
     'title': new FormControl('', [Validators.required]),
@@ -21,8 +23,13 @@ export class ProductFormComponent implements OnInit {
     'imgUrl': new FormControl('', [Validators.required, Validators.pattern("(^http[s]?:\/{2})|(^www)|(^\/{1,2})")])
   });
 
-  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router) {
-    this.category$ = categoryService.getCategory()
+  constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
+    this.category$ = categoryService.getCategory();
+    this.id = route.snapshot.paramMap.get('id');
+    if(this.id)
+    productService.getProduct(this.id).pipe(take(1)).subscribe(product => {
+      this.form.setValue(product);
+    });
   }
 
   ngOnInit(): void {
@@ -46,7 +53,8 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit() {
     if(this.form.valid){
-      this.productService.saveProduct(this.form.value);
+      if(this.id) this.productService.updateProduct(this.id, this.form.value);
+      else this.productService.saveProduct(this.form.value);
       this.router.navigate(['/admin/products']);
     }
   }
