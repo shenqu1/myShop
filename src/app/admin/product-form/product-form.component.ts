@@ -20,7 +20,7 @@ export class ProductFormComponent implements OnInit {
     'title': new FormControl('', [Validators.required]),
     'price': new FormControl('', [Validators.required, PriceValidators.canNotSmallerThanZero]),
     'category': new FormControl('', [Validators.required]),
-    'imgUrl': new FormControl('', [Validators.required, Validators.pattern("(^http[s]?:\/{2})|(^www)|(^\/{1,2})")])
+    'imageUrl': new FormControl('', [Validators.required, Validators.pattern("(^http[s]?:\/{2})|(^www)|(^\/{1,2})")])
   });
 
   constructor(private categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
@@ -47,8 +47,8 @@ export class ProductFormComponent implements OnInit {
     return this.form.get('category');
   }
 
-  get imgUrl() {
-    return this.form.get('imgUrl');
+  get imageUrl() {
+    return this.form.get('imageUrl');
   }
 
   onSubmit() {

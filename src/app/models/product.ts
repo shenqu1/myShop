@@ -1,3 +1,4 @@
+
 export interface Product {
   key: string;
   title: string;
@@ -5,3 +6,4 @@ export interface Product {
   category: string;
   imageUrl: string;
 }
+

@@ -12,11 +12,12 @@ export class AppComponent {
   title = 'myShop';
   constructor(private auth: AuthService, private router: Router, private userService: UserService) {
     auth.user$.subscribe(user => {
-      if(user) {
-        userService.save(user);
-        let returnUrl = localStorage.getItem('returnUrl');
-        router.navigate([returnUrl]);
-      }
+      if(!user) return;
+      userService.save(user);
+      let returnUrl = localStorage.getItem('returnUrl');
+      if(!returnUrl) return;
+      localStorage.removeItem('returnUrl');
+      router.navigate([returnUrl]);
     });
   }
 }

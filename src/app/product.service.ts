@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from './models/product';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +32,5 @@ export class ProductService {
   deleteProduct(productId) {
     return this.db.object('/products/' + productId).remove();
   }
+
 }

@@ -18,6 +18,14 @@ import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownDirective } from './dropdown.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
