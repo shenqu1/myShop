@@ -27,6 +27,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSortModule} from '@angular/material/sort';
 import {CdkTableModule} from '@angular/cdk/table';
+import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
-    DropdownDirective
+    DropdownDirective,
+    ProductsFilterComponent
   ],
   imports: [
     BrowserModule,
