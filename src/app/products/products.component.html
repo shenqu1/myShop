@@ -6,14 +6,7 @@
   <div class="col">
     <div class="row">
       <div class="col-lg-4 col-md-6" *ngFor="let p of filterProducts">
-        <div class="card">
-          <img [src]="p.imageUrl" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">{{p.title}}</h5>
-            <p class="card-text">{{p.price | currency}}</p>
-            <a href="#" class="btn btn-primary">Add to Cart</a>
-          </div>
-        </div>
+        <app-product-card [product]="p"></app-product-card>
       </div>
     </div>
   </div>
