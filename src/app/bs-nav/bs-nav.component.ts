@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { AppUser } from '../models/AppUser';
+import { ShoppingCart } from '../models/shopping-cart';
 import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
@@ -13,18 +15,14 @@ export class BsNavComponent implements OnInit {
   collapsed = true;
   appUser:AppUser;
   cartQuantityCount: number;
+  cart$: Observable<ShoppingCart>;
 
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    let cart$ = (await this.shoppingCartService.getCart());
-    cart$.subscribe(cart => {
-      this.cartQuantityCount = 0;
-      for(let productId in cart.items)
-      this.cartQuantityCount += cart.items[productId].quantity;
-    })
+    this.cart$ = (await this.shoppingCartService.getCart());
   }
 
   logout() {

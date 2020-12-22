@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Product } from './models/product';
-import { shoppingCart } from './models/shopping-cart';
+import { ShoppingCart } from './models/shopping-cart';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,11 @@ export class ShoppingCartService {
     });
   }
 
-  async getCart(): Promise<Observable<shoppingCart>> {
+  async getCart(): Promise<Observable<ShoppingCart>> {
     let cardId = await this.getOrCreatCartId();
-    return this.db.object('/shopping-carts/' + cardId).valueChanges() as Observable<any>;
+    return this.db.object('/shopping-carts/' + cardId).valueChanges().pipe(
+      map(cart => new ShoppingCart(cart['items']))
+    );
   }
 
   private getItem(cardId: string, productId: string): AngularFireObject<any> {
