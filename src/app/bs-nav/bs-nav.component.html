@@ -7,7 +7,10 @@
   <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/shopping-cart" routerLinkActive="active" >ShoppingCart</a>
+        <a class="nav-link" routerLink="/shopping-cart" routerLinkActive="active" >
+          ShoppingCart
+          <span class="badge badge-pill badge-warning">{{cartQuantityCount}}</span>
+        </a>
       </li>
       <ng-template #anonymousUser>
         <li class="nav-item">

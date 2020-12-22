@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AppUser } from '../models/AppUser';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-bs-nav',
@@ -10,13 +11,20 @@ import { AppUser } from '../models/AppUser';
 export class BsNavComponent implements OnInit {
 
   collapsed = true;
-  appUser:AppUser
+  appUser:AppUser;
+  cartQuantityCount: number;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    let cart$ = (await this.shoppingCartService.getCart());
+    cart$.subscribe(cart => {
+      this.cartQuantityCount = 0;
+      for(let productId in cart.items)
+      this.cartQuantityCount += cart.items[productId].quantity;
+    })
   }
 
   logout() {
