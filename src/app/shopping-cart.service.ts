@@ -17,7 +17,8 @@ export class ShoppingCartService {
     });
   }
 
-  private getCart(cardId: string) {
+  async getCart() {
+    let cardId = await this.getOrCreatCartId();
     return this.db.object('/shopping-carts/' + cardId).valueChanges()
   }
 
