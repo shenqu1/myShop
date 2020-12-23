@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { Order } from '../models/order';
 import { ShoppingCart } from '../models/shopping-cart';
 import { OrderService } from '../order.service';
 import { ShoppingCartService } from '../shopping-cart.service';
@@ -55,22 +56,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    let order = {
-      datePlaced: new Date().getTime(),
-      userId: this.userId,
-      shipping: this.form.value,
-      items: this.cart.items.map(item => {
-        return {
-          product: {
-            title: item.title,
-            imageUrl: item.imageUrl,
-            price: item.price
-          },
-          quantity: item.quantity,
-          totalPrice: item.totalPrice
-        }
-      })
-    };
+    let order = new Order(this.userId, this.form.value, this.cart);
     this.orderService.saveOrder(order);
   }
 
