@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Order } from '../models/order';
@@ -26,7 +27,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   cartSubscription: Subscription;
   userSubscription: Subscription
 
-  constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService, private authService: AuthService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService, private authService: AuthService, private router: Router) { }
 
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
@@ -55,9 +56,10 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     return this.form.get('city');
   }
 
-  onSubmit() {
+  async onSubmit() {
     let order = new Order(this.userId, this.form.value, this.cart);
-    this.orderService.saveOrder(order);
+    let result = await this.orderService.placeOrder(order);
+    this.router.navigate(['/order-success', result.key]);
   }
 
 }
