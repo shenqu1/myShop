@@ -30,6 +30,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     DropdownDirective,
     ProductsFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
