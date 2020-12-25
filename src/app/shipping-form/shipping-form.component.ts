@@ -2,10 +2,10 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../auth.service';
-import { Order } from '../models/order';
-import { ShoppingCart } from '../models/shopping-cart';
-import { OrderService } from '../order.service';
+import { AuthService } from 'shared/services/auth.service';
+import { Order } from 'shared/models/order';
+import { ShoppingCart } from 'shared/models/shopping-cart';
+import { OrderService } from 'shared/services/order.service';
 
 @Component({
   selector: 'app-shipping-form',

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { BsNavComponent } from './bs-nav/bs-nav.component';
-import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
@@ -18,7 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DropdownDirective } from './dropdown.directive';
+import { DropdownDirective } from 'shared/directives/dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatTableModule} from '@angular/material/table';
@@ -28,8 +27,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSortModule} from '@angular/material/sort';
 import {CdkTableModule} from '@angular/cdk/table';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ProductCardComponent } from 'shared/components/product-card/product-card.component';
+import { ProductQuantityComponent } from 'shared/components/product-quantity/product-quantity.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
@@ -38,7 +37,6 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
   declarations: [
     AppComponent,
     BsNavComponent,
-    HomeComponent,
     ProductsComponent,
     ShoppingCartComponent,
     CheckOutComponent,

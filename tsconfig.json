@@ -15,11 +15,11 @@
       "dom"
     ],
     "baseUrl": "./",
-    // "paths": {
-    //   "shared/*": [
-    //     "app/shared/*"
-    //   ]
-    // }
+    "paths": {
+      "shared/*": [
+        "src/app/shared/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
