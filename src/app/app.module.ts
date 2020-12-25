@@ -32,6 +32,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
     ProductCardComponent,
     ProductQuantityComponent,
     OrderSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,
