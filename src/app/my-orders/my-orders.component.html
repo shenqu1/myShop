@@ -9,7 +9,7 @@
     <tr *ngFor="let order of orders">
       <td>{{order.shipping.name}}</td>
       <td>{{order.dateCreated | date}}</td>
-      <td><a [routerLink]="['/order', order.userId]">View</a></td>
+      <td><a [routerLink]="['/order', order.key]">View</a></td>
     </tr>
   </tbody>
 </table>

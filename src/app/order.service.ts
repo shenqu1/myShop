@@ -19,10 +19,14 @@ export class OrderService {
   }
 
   getOrders(): Observable<Order[]> {
-    return this.db.list('/orders').valueChanges().pipe(map(orders => orders as Order[]));
+    return this.db.list('/orders').snapshotChanges().pipe(
+      map(orders => orders.map(order => ({ key: order.key, ...order.payload.val() as Order })))
+    );
   }
 
   getOrdersById(userId: string): Observable<Order[]> {
-    return this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId)).valueChanges().pipe(map(orders => orders as Order[]));
+    return this.db.list('/orders', ref => ref.orderByChild('userId').equalTo(userId)).snapshotChanges().pipe(
+      map(orders => orders.map(order => ({ key: order.key, ...order.payload.val() as Order })))
+    );
   }
 }
