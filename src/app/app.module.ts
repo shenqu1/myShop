@@ -1,12 +1,6 @@
-import { CdkTableModule } from '@angular/cdk/table';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,9 +8,8 @@ import { DropdownDirective } from 'shared/directives/dropdown.directive';
 import { SharedModule } from 'shared/shared.module';
 
 import { environment } from '../environments/environment';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavComponent } from './bs-nav/bs-nav.component';
@@ -40,10 +33,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
     DropdownDirective,
     ProductsFilterComponent,
     OrderSummaryComponent,
@@ -51,19 +41,14 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     OrderDetailComponent
   ],
   imports: [
+    AdminModule,
     BrowserModule,
-    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    AdminRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSortModule,
-    CdkTableModule,
     SharedModule
   ],
   providers: [],
