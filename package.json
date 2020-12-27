@@ -26,6 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "bootstrap": "^4.5.3",
     "firebase": "^8.2.0",
+    "font-awesome": "^4.7.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
