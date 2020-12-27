@@ -4,6 +4,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -15,13 +17,20 @@ import { DropdownDirective } from './directives/dropdown.directive';
     DropdownDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   exports: [
     DropdownDirective,
     ProductCardComponent,
     ProductQuantityComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class SharedModule { }
