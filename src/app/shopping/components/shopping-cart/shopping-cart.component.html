@@ -1,8 +1,7 @@
 <h1>Shopping Cart</h1>
 <div *ngIf="cart$ | async as cart" class="row col-10">
-  <p>You have {{cart.quantity}} items in your shopping cart
-    <button class="btn btn-light btn-sm" (click)="clearCart()" *ngIf="cart.items.length">Clear Shopping Cart</button>
-  </p>
+  <p>You have {{cart.quantity}} items in your shopping cart.</p>
+  <button class="btn btn-light btn-sm ml-auto" (click)="clearCart()" *ngIf="cart.items.length">Clear Shopping Cart</button>
   <table class="table">
     <thead>
       <tr>
