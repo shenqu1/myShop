@@ -11,16 +11,14 @@ import { environment } from '../environments/environment';
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BsNavComponent } from './bs-nav/bs-nav.component';
-import { LoginComponent } from './login/login.component';
+import { BsNavComponent } from './core/components/bs-nav/bs-nav.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { CoreModule } from './core/core.module';
 import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BsNavComponent,
-    LoginComponent,
-    DropdownDirective,
+    AppComponent
   ],
   imports: [
     AdminModule,
@@ -32,6 +30,7 @@ import { ShoppingModule } from './shopping/shopping.module';
     BrowserAnimationsModule,
     SharedModule,
     ShoppingModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
